@@ -2,7 +2,8 @@
  * This template loads a Markdown page into an HTML
  *@
 
-@(src: String)
+@(src: String, content: String)
   @main("Markdown Source") {
-    <pre>@src</pre>
+    <h1>@src</h1>
+    <pre>@content</pre>
   }

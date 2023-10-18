@@ -4,12 +4,14 @@ import javax.inject._
 import play.api._
 import play.api.mvc._
 
+import scala.reflect.io.File
+
 /**
  * This controller creates an `Action` to handle HTTP requests to any Markdown sourced pages. They will be converted
  * into HTML and sent to the user.
  */
 @Singleton
-class MarkdownController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class PageController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
   /**
    * Create an Action to render an HTML page.
@@ -19,7 +21,9 @@ class MarkdownController @Inject()(val controllerComponents: ControllerComponent
    * a path of `/`.
    */
 
-  def md_page(path: String) = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.page(path))
+  def read_page(path: String) = Action { implicit request: Request[AnyContent] =>
+    val source = scala.io.Source.fromFile("public/" ++ path)
+    val lines = try source.mkString finally source.close()
+    Ok(views.html.page(path, lines))
   }
 }
