@@ -3,3 +3,7 @@ Web Server application that renders Markdown files as a webpage. The intent is t
 and that no JavaScript is required for an operational webpage.
 
 ## Usage
+
+```shell
+sbt run
+```
