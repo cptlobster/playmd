@@ -21,8 +21,4 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }
-
-  def md_page(path: String) = Action { implicit request: Request[AnyContent] =>
-    NoContent
-  }
 }
