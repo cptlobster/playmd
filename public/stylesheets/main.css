@@ -37,6 +37,11 @@ p {
     line-height: 1.6;
 }
 
+li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 header {
     display: flex;
     flex-direction: row;
