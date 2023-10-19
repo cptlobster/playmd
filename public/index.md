@@ -14,3 +14,9 @@ file can be done by navigating to `/src/index.md`.
 
 ## Syntax
 Standard Markdown syntax is supported.
+
+## Packages Used
+playmd uses the following external libraries:
+
+- [Play Framework](https://www.playframework.com)
+- [TxtMark](https://github.com/rjeschke/txtmark)

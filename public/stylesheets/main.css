@@ -1,35 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@100..700&family=Inter:wght@100..1000&display=swap');
 
+:root {
+    --root-col: 200;
+    --background: hsl(var(--root-col), 20%, 20%);
+    --text: hsl(var(--root-col), 20%, 85%);
+    --header: white;
+    --hr-main: hsla(var(--root-col), 20%, 85%, 20%);
+    --hr-header: hsla(var(--root-col), 60%, 85%, 15%);
+    --link: hsl(var(--root-col), 60%, 75%);
+    --link-hov: hsl(var(--root-col), 60%, 55%);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: hsl(var(--root-col), 20%, 80%);
+        --text: hsl(var(--root-col), 20%, 15%);
+        --header: black;
+        --hr-main: hsla(var(--root-col), 20%, 15%, 20%);
+        --hr-header: hsla(var(--root-col), 60%, 15%, 15%);
+        --link: hsl(var(--root-col), 60%, 35%);
+        --link-hov: hsl(var(--root-col), 60%, 55%);
+    }
+}
+
 body {
     font-size: 100%;
     padding: 2rem 5%;
-    background: hsl(210, 20%, 20%);
-    color: hsl(210, 20%, 85%);
+    background: var(--background);
+    color: var(--text);
     font-family: "Inter", monospace;
 }
 
 header h1 {
     font-weight: 900;
     font-size: 2rem;
-    color: white;
+    color: var(--header);
+    padding-bottom: unset;
+    border-bottom: unset;
 }
 
 h1 {
     font-weight: 700;
     font-size: 2.5rem;
-    color: white;
+    color: var(--header);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hr-header);
 }
 
 h2 {
     font-weight: 700;
     font-size: 2rem;
-    color: white;
+    color: var(--header);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hr-header);
 }
 
 h3 {
     font-weight: 700;
     font-size: 1.5rem;
-    color: white;
+    color: var(--header);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--hr-header);
 }
 
 p {
@@ -47,13 +78,13 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid hsla(210, 20%, 85%, 20%);
+    padding: 1.5rem 5%;
+    border-bottom: 1px solid var(--hr-main);
 }
 
 footer {
     padding-top: 1.5rem;
-    border-top: 1px solid hsla(210, 20%, 85%, 20%);
+    border-top: 1px solid var(--hr-main);
 }
 
 header ul {
@@ -68,10 +99,11 @@ main {
 }
 
 a:link, a:visited {
-    color: hsl(210, 60%, 85%);
+    color: var(--link);
     text-decoration: none;
 }
 a:hover {
+    color: var(--link-hov);
     text-decoration: underline;
 }
 
