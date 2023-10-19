@@ -3,7 +3,8 @@
  *@
 
 @(src: String, content: String)
-  @main("Markdown Source") {
-    <h1>@src</h1>
-    <pre>@content</pre>
+  @main(src) {
+    <main>
+    @Html(content)
+    </main>
   }

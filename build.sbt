@@ -9,5 +9,6 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       guice,
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.1.0" % Test,
+      "es.nitaur.markdown" % "txtmark" % "0.16",
     )
   )

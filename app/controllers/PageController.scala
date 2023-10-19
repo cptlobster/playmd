@@ -1,5 +1,7 @@
 package controllers
 
+import com.github.rjeschke.txtmark.Processor
+
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -24,6 +26,13 @@ class PageController @Inject()(val controllerComponents: ControllerComponents) e
   def read_page(path: String) = Action { implicit request: Request[AnyContent] =>
     val source = scala.io.Source.fromFile("public/" ++ path)
     val lines = try source.mkString finally source.close()
-    Ok(views.html.page(path, lines))
+    Ok(views.html.prepage(path, lines))
+  }
+
+  def read_md(path: String) = Action { implicit request: Request[AnyContent] =>
+    val source = scala.io.Source.fromFile("public/" ++ path)
+    val lines = try source.mkString finally source.close()
+    val result = Processor.process(lines)
+    Ok(views.html.htmlpage(path, result))
   }
 }

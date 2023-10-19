@@ -1,5 +1,8 @@
 # playmd
-this is an example webpage using a `playmd` application server.
+playmd is a server-side web application that renders Markdown files as a webpage. The intent is that this is all
+processed on the server, and that no JavaScript is required for an operational webpage.
+
+This is an example webpage using a playmd application server. If this is being rendered as HTML, then great!
 
 ## Files
 Every page is a Markdown file stored in the document tree. They are all stored in the `/public` folder in your Play
