@@ -24,6 +24,10 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
       )
     }).toList
   }
+  def assemble(path: String)(content: Html): Html = {
+    val title = config.get[String]("title")
+    views.html.main(title, get_links(path))(content)
+  }
 
   /**
    * Create an Action to render an HTML page.
@@ -35,22 +39,19 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
   def read_page(path: String) = Action { implicit request: Request[AnyContent] =>
     val source = scala.io.Source.fromFile("public/" ++ path)
     val lines = try source.mkString finally source.close()
-    val title = config.get[String]("title")
-    Ok(views.html.main(title, get_links(path))(Html("<pre>" ++ lines ++ "</pre>")))
+    Ok(assemble(path)(Html("<pre>" ++ lines ++ "</pre>")))
   }
 
   def read_md(path: String) = Action { implicit request: Request[AnyContent] =>
     val source = scala.io.Source.fromFile("public/" ++ path)
     val lines = try source.mkString finally source.close()
     val result = Processor.process(lines)
-    val title = config.get[String]("title")
-    Ok(views.html.main(title, get_links(path))(Html("<main>" ++ result ++ "</main>")))
+    Ok(assemble(path)(Html("<main>" ++ result ++ "</main>")))
   }
 
   def read_html(path: String) = Action { implicit request: Request[AnyContent] =>
     val source = scala.io.Source.fromFile("public/" ++ path)
     val lines = try source.mkString finally source.close()
-    val title = config.get[String]("title")
-    Ok(views.html.main(title, get_links(path))(Html("<main>" ++ lines ++ "</main>")))
+    Ok(assemble(path)(Html("<main>" ++ lines ++ "</main>")))
   }
 }
