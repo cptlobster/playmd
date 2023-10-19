@@ -1,9 +1,9 @@
-@(title: String, links: List[String])
+@(title: String, links: List[Map[String, String]])
 <header>
     <h1>@title</h1>
     <ul>
     @for(link <- links) {
-        <li><a href="@link">@link</a></li>
+        <li><a href="@link.get("href")">@link.get("name")</a></li>
     }
     </ul>
 </header>
