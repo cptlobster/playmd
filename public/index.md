@@ -3,9 +3,9 @@
 - [Background](background.md)
 
 ## Software Development
-- [Programming Experience](programming/experience.md)
-- [Projects](programming/projects.md)
-- [Interests](programming/interests.md)
+- [Programming Experience](experience.md)
+- [Projects](projects.md)
+- [Interests](interests.md)
 
 ## Photography
 - [Portfolio](https://folio.cptlobster.dev)
