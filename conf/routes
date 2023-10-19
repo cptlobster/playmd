@@ -7,4 +7,5 @@
 GET     /                           controllers.PageController.read_md(path="index.md")
 GET     /src/*file                  controllers.Assets.versioned(path="/public", file: Asset)
 GET     /$path<.*\.md$>             controllers.PageController.read_md(path: String)
+GET     /$path<.*\.html$>           controllers.PageController.read_html(path: String)
 GET     /*path                      controllers.PageController.read_page(path: String)
