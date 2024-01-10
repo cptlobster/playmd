@@ -46,6 +46,8 @@ following:
 
 ## Launching
 
+Ensure that you have the latest version of SBT installed. This also depends on Java.
+
 To test locally:
 
 ```shell
@@ -62,7 +64,7 @@ You can configure playmd using the config in `conf/application.conf`. This uses 
 - `links`: The links to display in the header:
   - `text`: The text to be displayed for each link.
   - `href`: The target of the link. Can be relative to `/public`, or any other external link (`http`, `https`, `mailto`,
-    `tel`, `ssh`, really whatever is supported)
+    `tel`, `ssh`, really whatever is supported by the internet.)
 
 ## External Libraries
 
