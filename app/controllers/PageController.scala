@@ -29,7 +29,7 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
     views.html.main(title, get_links(path))(content)
   }
 
-  def exists(path: String): Boolean = scala.reflect.io.File(path).exists
+  def exists(path: String): Boolean = scala.reflect.io.File("public/" ++ path).exists
 
   def read_file(path: String): String = {
     val source = scala.io.Source.fromFile("public/" ++ path)
@@ -50,21 +50,21 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
    * will be called when the application receives a `GET` request with
    * a path of `/`.
    */
-  def read_page(path: String) = Action { implicit request: Request[AnyContent] =>
+  def read_page(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val lines = read_file(path)
       Ok(assemble(path)(Html("<pre>" ++ lines ++ "</pre>")))
     })
   }
 
-  def read_md(path: String) = Action { implicit request: Request[AnyContent] =>
+  def read_md(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val result = Processor.process(read_file(path))
       Ok(assemble(path)(Html("<main>" ++ result ++ "</main>")))
     })
   }
 
-  def read_html(path: String) = Action { implicit request: Request[AnyContent] =>
+  def read_html(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val lines = read_file(path)
       Ok(assemble(path)(Html("<main>" ++ lines ++ "</main>")))
