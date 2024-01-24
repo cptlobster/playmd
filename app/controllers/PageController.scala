@@ -3,6 +3,8 @@ package controllers
 import com.github.rjeschke.txtmark.Processor
 import com.typesafe.config.Config
 
+import java.nio.file.{Files, Paths}
+
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -33,8 +35,7 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
     views.html.main(title, get_links(path))(content)
   }
 
-
-  def exists(path: String): Boolean = scala.reflect.io.File("public/" ++ path).exists
+  def exists(path: String): Boolean = Files.exists(Paths.get("public/" ++ path))
 
   def read_file(path: String): String = {
     val source = scala.io.Source.fromFile("public/" ++ path)
