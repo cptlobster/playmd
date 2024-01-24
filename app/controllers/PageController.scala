@@ -28,6 +28,11 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
     val title = config.get[String]("title")
     views.html.main(title, get_links(path))(content)
   }
+  def assemble_media(path: String)(content: Html): Html = {
+    val title = config.get[String]("title")
+    views.html.main(title, get_links(path))(content)
+  }
+
 
   def exists(path: String): Boolean = scala.reflect.io.File("public/" ++ path).exists
 
@@ -53,21 +58,27 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
   def read_page(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val lines = read_file(path)
-      Ok(assemble(path)(Html("<pre>" ++ lines ++ "</pre>")))
+      Ok(assemble(path)(Html(s"<pre>$lines</pre>")))
     })
   }
 
   def read_md(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val result = Processor.process(read_file(path))
-      Ok(assemble(path)(Html("<main>" ++ result ++ "</main>")))
+      Ok(assemble(path)(Html(s"<main>$result</main>")))
     })
   }
 
   def read_html(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
       val lines = read_file(path)
-      Ok(assemble(path)(Html("<main>" ++ lines ++ "</main>")))
+      Ok(assemble(path)(Html(s"<main>$lines</main>")))
+    })
+  }
+
+  def play_audio(path: String, encoding: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+    find_or_404(path)(() => {
+      Ok(assemble_media(path)(Html(s"<main><h1>$path</h1><audio controls><source src='$path' type='$encoding'></audio></main>")))
     })
   }
 }
