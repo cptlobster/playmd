@@ -7,8 +7,8 @@ import scala.annotation.tailrec
 type Content = String | Element | List[String | Element]
 abstract class Element:
   val content: Content
-  val id: String = ""
-  val classes: List[String] = List()
+  val id: String
+  val classes: List[String]
   val tag: String
   private val start: String =
     "<" + 
