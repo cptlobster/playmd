@@ -4,10 +4,10 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.PageController.read_md(path="index.md")
+GET     /                           controllers.LegacyPageController.read_md(path="index.md")
 GET     /src/*file                  controllers.Assets.versioned(path="/public", file: Asset)
-GET     /$path<.*\.md$>             controllers.PageController.read_md(path: String)
-GET     /$path<.*\.html$>           controllers.PageController.read_html(path: String)
-GET     /$path<.*\.mp3$>            controllers.PageController.play_audio(encoding="audio/mpeg", path: String)
-GET     /$path<.*\.ogg$>            controllers.PageController.play_audio(encoding="audio/ogg", path: String)
-GET     /*path                      controllers.PageController.read_page(path: String)
+GET     /$path<.*\.md$>             controllers.LegacyPageController.read_md(path: String)
+GET     /$path<.*\.html$>           controllers.LegacyPageController.read_html(path: String)
+GET     /$path<.*\.mp3$>            controllers.LegacyPageController.play_audio(encoding="audio/mpeg", path: String)
+GET     /$path<.*\.ogg$>            controllers.LegacyPageController.play_audio(encoding="audio/ogg", path: String)
+GET     /*path                      controllers.LegacyPageController.read_page(path: String)
