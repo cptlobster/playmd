@@ -26,7 +26,8 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
   
   def assemble(path: String)(content: Html): Html =
     val title = config.get[String]("title")
-    views.html.main(title, get_links(path))(content)
+    val theme = config.get[String]("theme")
+    views.html.main(path, title, theme, get_links(path))(content)
 
   def find_or_404(path: String)(callback: () => Result): Result =
     if FileUtils.exists(path) then callback()
@@ -43,9 +44,8 @@ class PageController @Inject()(config: Configuration, val controllerComponents: 
         case "wav" => AudioGen(path, "audio/wav")
         case _ => TextGen(path)
 
-  def read_page(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
+  def read_file(path: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
-      val lines = FileUtils.read_file(path)
-      Ok(assemble(path)(Html(s"<pre>$lines</pre>")))
+      Ok(assemble(path)(Html(get_generator(path).assemble)))
     })
   }

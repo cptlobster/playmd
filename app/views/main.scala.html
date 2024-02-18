@@ -1,4 +1,4 @@
-@(title: String, links: List[Map[String, String]])(content: Html)
+@(path: String, title: String, theme: String, links: List[Map[String, String]])(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,8 +6,8 @@
         @* Here's where we render the page title `String`. *@
         <title>@title</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
-        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at(s"stylesheets/${theme}.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
 
     </head>
     <body>
@@ -16,6 +16,6 @@
         @header(title, links)
         @content
 
-        @footer(title)
+        @footer(path)
     </body>
 </html>

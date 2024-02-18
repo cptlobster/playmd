@@ -9,8 +9,11 @@ Every page is a Markdown file stored in the document tree. They are all stored i
 project. When a file is accessed, Play renders the HTML and serves it.
 
 ### Viewing the Source
-The source files can be viewed by adding `/src/` to the beginning of the path. For example, reading the source of this
-file can be done by navigating to `/src/index.md`.
+The source files can be downloaded by adding `/src/` to the start of the path. For example, downloading the source
+of this file can be done by navigating to `/src/index.md`. Similarly, you can reference source files in an HTML or
+Markdown file by adding `/src/` to the start of their path (like images).
+
+*Note: this will be automated in a future release.*
 
 ## Syntax
 Standard Markdown syntax is supported.

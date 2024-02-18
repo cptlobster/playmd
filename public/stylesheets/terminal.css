@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@87.5,200..900&display=swap');
+
+:root {
+    --root-col: 100;
+    --background: hsl(var(--root-col), 0%, 5%);
+    --text: hsl(var(--root-col), 40%, 85%);
+    --header: white;
+    --hr-main: hsla(var(--root-col), 20%, 85%, 20%);
+    --hr-header: hsla(var(--root-col), 60%, 85%, 15%);
+    --link: hsl(var(--root-col), 60%, 75%);
+    --link-hov: hsl(var(--root-col), 60%, 65%);
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: hsl(var(--root-col), 20%, 80%);
+        --text: hsl(var(--root-col), 20%, 15%);
+        --header: black;
+        --hr-main: hsla(var(--root-col), 20%, 15%, 20%);
+        --hr-header: hsla(var(--root-col), 60%, 15%, 15%);
+        --link: hsl(var(--root-col), 60%, 35%);
+        --link-hov: hsl(var(--root-col), 60%, 45%);
+    }
+}
+
+body {
+    font-size: 100%;
+    padding: 1rem 5%;
+    background: var(--background);
+    color: var(--text);
+    text-shadow: 0 0 2px hsla(var(--root-col), 70%, 80%, 50%);
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: inherit;
+    font-style: normal;
+    font-variation-settings: "wdth" 87.5;
+}
+pre, code {
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-weight: inherit;
+    font-style: normal;
+    font-variation-settings: "wdth" 87.5;
+    color: var(--header);
+}
+
+header h1 {
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--header);
+    padding-bottom: unset;
+    border-bottom: unset;
+    box-shadow: none;
+}
+header h1::before {
+    content: "$> ";
+    font-weight: 900;
+    font-size: 2rem;
+    color: var(--text);
+    padding-bottom: unset;
+    border-bottom: unset;
+    box-shadow: none;
+    font-family: "Inconsolata", monospace;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings: "wdth" 87.5;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--header);
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid var(--hr-header);
+    box-shadow: 0 8px 4px -4px hsla(0, 0%, 0%, 5%);
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--header);
+    padding-bottom: 0.2rem;
+    border-bottom: 1px dotted var(--hr-header);
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--header);
+    padding-bottom: 0.2rem;
+    border-bottom: 1px dotted var(--hr-header);
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.1;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.5rem 5%;
+    border-bottom: 1px solid var(--hr-main);
+    position: sticky;
+    top: 0;
+    background: var(--background);
+    box-shadow: 0 16px 8px -8px hsla(0, 0%, 0%, 5%);
+}
+
+footer {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--hr-main);
+    box-shadow: 0 -16px 8px -8px hsla(0, 0%, 0%, 5%);
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 1rem;
+}
+
+main {
+    margin: 5rem;
+}
+
+li {
+    font-size: 1rem;
+    line-height: 1.1;
+}
+
+a:link, a:visited {
+    color: var(--link);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--link-hov);
+    text-decoration: underline;
+}

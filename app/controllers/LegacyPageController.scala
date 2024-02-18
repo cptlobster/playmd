@@ -28,11 +28,8 @@ class LegacyPageController @Inject()(config: Configuration, val controllerCompon
   }
   def assemble(path: String)(content: Html): Html = {
     val title = config.get[String]("title")
-    views.html.main(title, get_links(path))(content)
-  }
-  def assemble_media(path: String)(content: Html): Html = {
-    val title = config.get[String]("title")
-    views.html.main(title, get_links(path))(content)
+    val theme = config.get[String]("theme")
+    views.html.main(path, title, theme, get_links(path))(content)
   }
 
   def exists(path: String): Boolean = Files.exists(Paths.get("public/" ++ path))
@@ -79,7 +76,7 @@ class LegacyPageController @Inject()(config: Configuration, val controllerCompon
 
   def play_audio(path: String, encoding: String): Action[AnyContent] = Action { implicit request: Request[AnyContent] =>
     find_or_404(path)(() => {
-      Ok(assemble_media(path)(Html(s"<main><h1>$path</h1><audio controls><source src='$path' type='$encoding'></audio></main>")))
+      Ok(assemble(path)(Html(s"<main><h1>$path</h1><audio controls><source src='$path' type='$encoding'></audio></main>")))
     })
   }
 }
