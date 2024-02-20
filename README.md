@@ -66,9 +66,21 @@ You can configure playmd using the config in `conf/application.conf`. This uses 
   - `href`: The target of the link. Can be relative to `/public`, or any other external link (`http`, `https`, `mailto`,
     `tel`, `ssh`, really whatever is supported by the internet.)
 
-## External Libraries
+## Licensing
+playmd is licensed under the [GNU General Public License, version 3](LICENSE.md). 
 
-playmd uses the following external libraries:
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+[GNU General Public License, version 3](LICENSE.md) for more details.
+
+### External Libraries
+
+playmd uses the following external libraries, which are licensed under
+[the Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0):
 
 - [Play Framework](https://www.playframework.com)
 - [TxtMark](https://github.com/rjeschke/txtmark)
